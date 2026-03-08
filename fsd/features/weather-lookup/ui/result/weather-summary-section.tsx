@@ -1,6 +1,6 @@
 import { WeatherCard, type WeatherSummary } from '@/fsd/entities/weather';
 import { HourlyTemperatureList } from './hourly-temperature-list';
-import { CloudRain, Droplets, Sun } from 'lucide-react';
+import { Sun, ThermometerSnowflake, ThermometerSun } from 'lucide-react';
 
 type WeatherSummarySectionProps = {
   summary: WeatherSummary;
@@ -22,7 +22,7 @@ export function WeatherSummarySection({ summary }: WeatherSummarySectionProps) {
               ? `${summary.forecast.minimumTemperatureCelsius}°`
               : null
           }
-          icon={<Droplets className="h-5 w-5 text-blue-500" />}
+          icon={<ThermometerSnowflake className="h-5 w-5 text-blue-500" />}
         />
         <WeatherCard
           label="오늘 최고 기온"
@@ -31,7 +31,7 @@ export function WeatherSummarySection({ summary }: WeatherSummarySectionProps) {
               ? `${summary.forecast.maximumTemperatureCelsius}°`
               : null
           }
-          icon={<CloudRain className="h-5 w-5 text-indigo-500" />}
+          icon={<ThermometerSun className="h-5 w-5 text-red-500" />}
         />
       </div>
 
