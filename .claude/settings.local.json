@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:feature-sliced.design)",
+      "WebSearch",
+      "WebFetch(domain:feature-sliced.github.io)",
+      "WebFetch(domain:fsd.how)",
+      "Bash(npx tsc:*)",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs",
+      "Bash(ls:*)",
+      "Bash(tree:*)",
+      "Bash(grep:*)",
+      "Bash(node:*)"
+    ]
+  }
+}
