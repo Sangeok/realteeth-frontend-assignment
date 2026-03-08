@@ -43,7 +43,9 @@ function buildKakaoUrl(params: GeocoderRequestParams): string {
     y: String(params.latitude),
     input_coord: 'WGS84',
   });
-  return `${process.env.KAKAO_GEOCODER_BASE_URL}?${query.toString()}`;
+  const baseUrl = process.env.KAKAO_GEOCODER_BASE_URL;
+  if (!baseUrl) throw new Error('Missing KAKAO_GEOCODER_BASE_URL in server environment.');
+  return `${baseUrl}?${query.toString()}`;
 }
 
 export async function fetchGeocoderUpstream(
