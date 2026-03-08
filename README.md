@@ -139,10 +139,10 @@ npm install
 
 ### 환경 변수 설정
 
-프로젝트 루트에 `.env.local` 파일을 생성합니다 (아래 [환경 변수](#환경-변수) 섹션 참고):
+프로젝트 루트의 `.env.example`을 복사하여 `.env.local`을 생성하고, 각 항목에 실제 값을 입력합니다 (아래 [환경 변수](#환경-변수) 섹션 참고):
 
 ```bash
-# 아래 환경 변수 예시를 기준으로 .env.local 파일을 직접 생성
+cp .env.example .env.local
 ```
 
 ### 실행
@@ -170,20 +170,20 @@ npx tsc --noEmit
 
 ## 환경 변수
 
-`.env.local` 파일에 다음 키를 설정해야 합니다.
+`.env.local` 파일에 다음 키를 설정해야 합니다. 모든 외부 API는 서버 Route Handler를 통해 호출되므로 `NEXT_PUBLIC_` 접두사 없이 서버 전용 변수로 관리합니다.
 
 | 변수명 | 설명 | 발급처 |
 |--------|------|--------|
 | `WEATHER_DATA_API_KEY` | 기상청 API 인증키 (URL 인코딩된 값) | [공공데이터 포털](https://www.data.go.kr) → "기상청_단기예보 ((구)_동네예보) 조회서비스" 신청 |
 | `WEATHER_DATA_FORECAST_BASE_URL` | 기상청 단기예보 엔드포인트 | `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst` |
 | `WEATHER_DATA_NOWCAST_BASE_URL` | 기상청 초단기실황 엔드포인트 | `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst` |
-| `GEOCODER_API_KEY` | VWORLD 역지오코딩 API 키 | [VWORLD](https://www.vworld.kr) → Open API 신청 |
+| `KAKAO_REST_API_KEY` | Kakao 역지오코딩 REST API 키 | [Kakao Developers](https://developers.kakao.com) → 앱 생성 → REST API 키 |
 
 ```env
 WEATHER_DATA_API_KEY=<공공데이터포털_인증키>
 WEATHER_DATA_FORECAST_BASE_URL=https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst
 WEATHER_DATA_NOWCAST_BASE_URL=https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst
-GEOCODER_API_KEY=<VWORLD_API_키>
+KAKAO_REST_API_KEY=<Kakao_REST_API_키>
 ```
 
 ---
@@ -195,7 +195,7 @@ realteeth/
 ├── app/                    # Next.js App Router
 │   ├── api/
 │   │   ├── weather/        # 기상청 API 프록시 Route Handler
-│   │   └── geocoder/       # VWORLD 역지오코딩 프록시 Route Handler
+│   │   └── geocoder/       # Kakao 역지오코딩 프록시 Route Handler
 │   ├── district/
 │   │   └── [id]/           # 지역 상세 페이지 (/district/[id])
 │   ├── error.tsx           # 전역 에러 경계

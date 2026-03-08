@@ -11,7 +11,9 @@
       "Bash(ls:*)",
       "Bash(tree:*)",
       "Bash(grep:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:developers.kakao.com)"
     ]
   }
 }
