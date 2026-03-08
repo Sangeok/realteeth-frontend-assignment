@@ -1,8 +1,6 @@
 # RealTeeth 프론트엔드 과제 (Weather App) 
 
-공공데이터 포털 기상청 API를 활용한 현재 위치 기반 날씨 조회 앱입니다.
-브라우저 Geolocation으로 현재 위치를 감지하고, 대한민국 행정구역 검색과 즐겨찾기를 통해 여러 지역의 날씨를 한눈에 확인할 수 있습니다.
-첫 진입 시 WeatherDashboard와 즐겨찾기 카드에 스켈레톤을 사용해 레이아웃 점프를 줄이고, 로컬 ErrorBoundary로 오류를 격리합니다.
+공공데이터 포털 기상청 API 및 KAKAO API를 활용한 현재 위치 기반 날씨 조회 앱입니다.
 
 ---
 
@@ -17,7 +15,7 @@
 ### 현재 위치 기반 날씨
 - 앱 첫 진입 시 브라우저 Geolocation API로 현재 위치를 자동 감지
 - 감지된 좌표를 기상청 격자 좌표로 변환하여 날씨 정보 조회
-- 위도/경도를 VWORLD 역지오코딩 API로 도로명 주소로 변환하여 표시
+- 위도/경도를 Kakao 역지오코딩 API를 통해 도로명 주소로 변환하여 표시(해당 부분은 필수 기능이 아니지만 추가하였음.)
 
 ### 날씨 정보 표시
 - 현재 기온 (기상청 초단기실황)
@@ -178,12 +176,14 @@ npx tsc --noEmit
 | `WEATHER_DATA_FORECAST_BASE_URL` | 기상청 단기예보 엔드포인트 | `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst` |
 | `WEATHER_DATA_NOWCAST_BASE_URL` | 기상청 초단기실황 엔드포인트 | `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst` |
 | `KAKAO_REST_API_KEY` | Kakao 역지오코딩 REST API 키 | [Kakao Developers](https://developers.kakao.com) → 앱 생성 → REST API 키 |
+| `KAKAO_GEOCODER_BASE_URL` | Kakao 역지오코딩 엔드포인트 | `https://dapi.kakao.com/v2/local/geo/coord2address.json` |
 
 ```env
 WEATHER_DATA_API_KEY=<공공데이터포털_인증키>
 WEATHER_DATA_FORECAST_BASE_URL=https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst
 WEATHER_DATA_NOWCAST_BASE_URL=https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst
 KAKAO_REST_API_KEY=<Kakao_REST_API_키>
+KAKAO_GEOCODER_BASE_URL=https://dapi.kakao.com/v2/local/geo/coord2address.json
 ```
 
 ---
